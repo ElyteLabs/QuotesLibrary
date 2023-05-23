@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elytelabs.quoteutils.R
+import com.elytelabs.quoteutils.adapters.ColorAdapter
 
 class ColorPickerDialog (private val context: Context) {
 
@@ -34,8 +35,6 @@ class ColorPickerDialog (private val context: Context) {
         0xffa1887f.toInt(),
         0xff90a4ae.toInt()
     )
-
-    // TODO: Add more colors https://htmlcolorcodes.com/color-chart/material-design-color-chart/
     private var colorPickerListener: ColorPickerListener? = null
 
     fun setColorSelectedListener(listener: ColorPickerListener) {
@@ -60,10 +59,6 @@ class ColorPickerDialog (private val context: Context) {
             dialog.dismiss()
         }
 
-        dialogView.findViewById<TextView>(R.id.closeDialog).setOnClickListener {
-            dialog.dismiss()
-        }
-
         adapter.setOnItemClickListener { color ->
             // Set the selected color as the background of the parent layout
             colorPickerListener?.onColorSelected(color)
@@ -73,44 +68,5 @@ class ColorPickerDialog (private val context: Context) {
         adapter.setColors(colors)
 
         dialog.show()
-    }
-
-    private inner class ColorAdapter : RecyclerView.Adapter<ColorAdapter.ViewHolder>() {
-
-        private var colors: List<Int> = emptyList()
-        private var onItemClickListener: ((Int) -> Unit)? = null
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(
-                R.layout.item_color,
-                parent,
-                false
-            )
-            return ViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val color = colors[position]
-            holder.colorView.setBackgroundColor(color)
-            holder.itemView.setOnClickListener {
-                onItemClickListener?.invoke(color)
-            }
-        }
-
-        override fun getItemCount(): Int {
-            return colors.size
-        }
-
-        fun setColors(colors: List<Int>) {
-            this.colors = colors
-        }
-
-        fun setOnItemClickListener(listener: (Int) -> Unit) {
-            this.onItemClickListener = listener
-        }
-
-        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val colorView: View = itemView.findViewById(R.id.colorView)
-        }
     }
 }

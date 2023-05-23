@@ -3,7 +3,6 @@ package com.elytelabs.quoteslibrary
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -11,7 +10,6 @@ import com.elytelabs.quoteutils.dialogs.ColorPickerDialog
 import com.elytelabs.quoteutils.dialogs.FontStyleDialog
 import com.elytelabs.quoteutils.dialogs.ImageSelectorDialog
 import com.elytelabs.quoteutils.utils.ColorGenerator
-import com.elytelabs.quoteutils.utils.PrefUtils
 import com.elytelabs.quoteutils.utils.UtilsHelper
 
 class MainActivity : AppCompatActivity() {

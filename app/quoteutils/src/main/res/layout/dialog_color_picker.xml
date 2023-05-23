@@ -39,16 +39,4 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_color" />
 
-
-    <TextView
-        android:padding="10dp"
-        android:id="@+id/closeDialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jose"
-        android:gravity="end"
-        android:textColor="@color/white"
-        android:text="@string/close"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
 </LinearLayout>
