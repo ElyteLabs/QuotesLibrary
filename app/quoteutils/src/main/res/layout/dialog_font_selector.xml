@@ -17,10 +17,10 @@
             android:paddingStart="10dp"
             android:paddingEnd="20dp"
             android:paddingTop="5dp"
-            android:src="@drawable/arrow_back" />
+            android:src="@drawable/arrow_back"
+            android:contentDescription="@string/back_button" />
 
         <TextView
-            android:id="@+id/titleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jose"

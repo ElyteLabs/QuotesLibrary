@@ -5,8 +5,7 @@
     <string name="choose_background">Choose Background</string>
     <string name="sample_text">Sample Text</string>
 
-    <string name="close">Close</string>
-
-    <string name="email_address">elytelabs@outlook.com</string>
+    <string name="transparency">Transparency</string>
+    <string name="back_button">Back Button</string>
 
 </resources>
