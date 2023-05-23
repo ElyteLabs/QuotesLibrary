@@ -49,16 +49,17 @@ dependencies {
     implementation("com.google.android.play:review-ktx:2.0.1")
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.elytelabs.quoteutils"
-            artifactId = "quote-utils"
-            version = "1.0.0"
+// Maven publishing configuration
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "com.elytelabs.quoteutils"
+                artifactId = "quoteutils"
+                version = "1.0"
 
-            afterEvaluate {
-                from(components["release"])
+                afterEvaluate {
+                    from(components["release"])
+                }
             }
         }
     }
-}
