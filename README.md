@@ -78,3 +78,7 @@ Helper methods for common tasks.
     UtilsHelper.copyText(this,textView.text.toString())
     UtilsHelper.openWebPage(this,WEBSITE_URL)
     UtilsHelper.showRatingDialog(this) // InAppReviewManager 
+    
+    
+### License
+This project is licensed under the [Apache 2.0]([url](http://www.apache.org/licenses/LICENSE-2.0.txt)) License.
