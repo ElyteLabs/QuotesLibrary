@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+
+    `maven-publish`
 }
 
 android {
@@ -45,4 +47,18 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.0")
 
     implementation("com.google.android.play:review-ktx:2.0.1")
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.elytelabs.quoteutils"
+            artifactId = "quote-utils"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
