@@ -1,30 +1,30 @@
 package com.elytelabs.quoteutils.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.elytelabs.quoteutils.R
-
 class ColorAdapter : RecyclerView.Adapter<ColorAdapter.ViewHolder>() {
 
     private var colors: List<Int> = emptyList()
+    private var transparency: Int = 255
     private var onItemClickListener: ((Int) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_color,
-            parent,
-            false
-        )
+    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_color, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val color = colors[position]
-        holder.colorView.setBackgroundColor(color)
+        val transparentColor = Color.argb(transparency, Color.red(color), Color.green(color), Color.blue(color))
+        holder.colorView.setBackgroundColor(transparentColor)
         holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(color)
+            onItemClickListener?.invoke(transparentColor)
         }
     }
 
@@ -34,6 +34,11 @@ class ColorAdapter : RecyclerView.Adapter<ColorAdapter.ViewHolder>() {
 
     fun setColors(colors: List<Int>) {
         this.colors = colors
+        notifyDataSetChanged()
+    }
+
+    fun setTransparency(transparency: Int) {
+        this.transparency = transparency
     }
 
     fun setOnItemClickListener(listener: (Int) -> Unit) {

@@ -1,60 +1,48 @@
 package com.elytelabs.quoteutils.utils
-
 import java.util.Random
 
-class ColorGenerator private constructor(colorList: List<Int>) {
+object ColorGenerator {
 
-    private val mColors: List<Int> = colorList
-    private val mRandom: Random = Random(System.currentTimeMillis())
+       private val colorsList = listOf(
+            0xFFF44336.toInt(),  // Red 500
+            0xFFEF5350.toInt(),  // Red 600
+            0xFFE91E63.toInt(),  // Pink 500
+            0xFFEC407A.toInt(),  // Pink 600
+            0xFF9C27B0.toInt(),  // Purple 500
+            0xFFAB47BC.toInt(),  // Purple 600
+            0xFF5E35B1.toInt(),  // Deep Purple 600
+            0xFF673AB7.toInt(),  // Deep Purple 500
+            0xFF3F51B5.toInt(),  // Indigo 500
+            0xFF3949AB.toInt(),  // Indigo 600
+            0xFF1E88E5.toInt(),  // Blue 600
+            0xFF2196F3.toInt(),  // Blue 500
+            0xFF03A9F4.toInt(),  // Light Blue 500
+            0xFF039BE5.toInt(),  // Light Blue 600
+            0xFF00ACC1.toInt(),  // Cyan 600
+            0xFF00BCD4.toInt(),  // Cyan 500
+            0xFF009688.toInt(),  // Teal 500
+            0xFF00897B.toInt(),  // Teal 600
+            0xFF43A047.toInt(),  // Green 600
+            0xFF4CAF50.toInt(),  // Green 500
+            0xFF7CB342.toInt(),   // Light Green 600
+            0xFF8BC34A.toInt(),  // Light Green 500
+            0xFFCDDC39.toInt(),  // Lime 500
+            0xFFFFEB3B.toInt(),  // Yellow 500
+            0xFFFF5722.toInt(),  // Deep Orange 500
+            0xFFFF9800.toInt(),  // Orange 500
+            0xFFFFC107.toInt(),  // Amber 500
+            0xFF795548.toInt(),  // Brown 500
+            0xFF9E9E9E.toInt(),  // Grey 500
+            0xFF607D8B.toInt()  // Blue Grey 500
+        )
 
-    companion object {
+    private val random: Random = Random(System.currentTimeMillis())
 
-        val DEFAULT: ColorGenerator
-        val MATERIAL: ColorGenerator
-
-        init {
-            DEFAULT = create(
-                listOf(
-                    0xfff16364.toInt(),
-                    0xfff58559.toInt(),
-                    0xfff9a43e.toInt(),
-                    0xffe4c62e.toInt(),
-                    0xff67bf74.toInt(),
-                    0xff59a2be.toInt(),
-                    0xff2093cd.toInt(),
-                    0xffad62a7.toInt(),
-                    0xff805781.toInt()
-                )
-            )
-            MATERIAL = create(
-                listOf(
-                    0xffe57373.toInt(),
-                    0xfff06292.toInt(),
-                    0xffba68c8.toInt(),
-                    0xff9575cd.toInt(),
-                    0xff7986cb.toInt(),
-                    0xff64b5f6.toInt(),
-                    0xff4fc3f7.toInt(),
-                    0xff4dd0e1.toInt(),
-                    0xff4db6ac.toInt(),
-                    0xff81c784.toInt(),
-                    0xffaed581.toInt(),
-                    0xffff8a65.toInt(),
-                    0xffd4e157.toInt(),
-                    0xffffd54f.toInt(),
-                    0xffffb74d.toInt(),
-                    0xffa1887f.toInt(),
-                    0xff90a4ae.toInt()
-                )
-            )
-        }
-
-        private fun create(colorList: List<Int>): ColorGenerator {
-            return ColorGenerator(colorList)
-        }
+    fun getColorList() : List<Int> {
+        return colorsList
     }
 
     fun getRandomColor(): Int {
-        return mColors[mRandom.nextInt(mColors.size)]
+        return colorsList[random.nextInt(colorsList.size)]
     }
 }

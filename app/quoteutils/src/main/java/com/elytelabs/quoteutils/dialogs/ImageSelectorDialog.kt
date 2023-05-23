@@ -15,8 +15,12 @@ class ImageSelectorDialog(private val context: Context) {
     private var imagePickerListener: ImagePickerListener? = null
 
 
+    private val colorPickerDialog = ColorPickerDialog(context)
+
+
     interface ImagePickerListener {
         fun onImageSelected(imageResource: Int)
+        fun onColorSelected(color: Int)
     }
 
     fun setImageSelectedListener(listener: ImagePickerListener) {
@@ -47,6 +51,18 @@ class ImageSelectorDialog(private val context: Context) {
             imagePickerListener?.onImageSelected(imageResource)
             dialog.dismiss()
 
+        }
+
+        adapter.setOnColorPickerClickListener {
+            // Show the color picker dialog
+            colorPickerDialog.setColorSelectedListener(object : ColorPickerDialog.ColorPickerListener {
+                override fun onColorSelected(color: Int) {
+                    imagePickerListener?.onColorSelected(color)
+                }
+            })
+
+            colorPickerDialog.showColorPickerDialog()
+            dialog.dismiss()
         }
 
         adapter.setBackgrounds(backgrounds)

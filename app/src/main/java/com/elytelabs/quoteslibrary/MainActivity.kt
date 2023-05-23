@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity() {
                     rootLayout.setBackgroundResource(imageResource)
                 }
 
+                override fun onColorSelected(color: Int) {
+                    rootLayout.setBackgroundColor(color)
+                }
+
             })
             selectorDialog.showImageSelectionDialog()
         }
@@ -67,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         randomColor.setOnClickListener {
-           val color = ColorGenerator.DEFAULT.getRandomColor()
+           val color = ColorGenerator.getRandomColor()
             rootLayout.setBackgroundColor(color)
         }
 

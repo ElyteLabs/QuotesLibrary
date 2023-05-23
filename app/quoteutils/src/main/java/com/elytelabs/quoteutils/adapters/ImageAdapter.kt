@@ -10,7 +10,9 @@ import com.elytelabs.quoteutils.R
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     private var backgrounds: List<Int> = emptyList()
+
     private var onImageClickListener: ((Int) -> Unit)? = null
+    private var onColorPickerListener: (() -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -20,11 +22,18 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val imageResource = backgrounds[position]
+        if (position == 0) {
+            holder.imageView.setImageResource(R.drawable.color_wheel)
+            holder.itemView.setOnClickListener {
+                onColorPickerListener?.invoke()
+            }
+        }
+        else {
             holder.imageView.setImageResource(imageResource)
             holder.itemView.setOnClickListener {
                 onImageClickListener?.invoke(imageResource)
+            }
         }
-
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +46,10 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     fun setOnImageClickListener(listener: (Int) -> Unit) {
         this.onImageClickListener = listener
+    }
+
+    fun setOnColorPickerClickListener(listener: () -> Unit) {
+        this.onColorPickerListener = listener
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
