@@ -60,6 +60,19 @@ dependencies {
                 afterEvaluate {
                     from(components["release"])
                 }
+
+                pom {
+                    name.set("QuoteUtils Library")
+                    description.set("Quotes Library Utils and Helpers")
+                    url.set("https://github.com/ElyteLabs/QuotesLibrary")
+
+                    licenses {
+                        license {
+                            name.set("Apache 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                }
             }
         }
     }
