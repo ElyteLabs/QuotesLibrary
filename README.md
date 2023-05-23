@@ -81,4 +81,4 @@ Helper methods for common tasks.
     
     
 ### License
-This project is licensed under the [Apache 2.0]([url](http://www.apache.org/licenses/LICENSE-2.0.txt)) License.
+This project is licensed under the[ Apache 2.0 ](http://www.apache.org/licenses/LICENSE-2.0.txt)License.
