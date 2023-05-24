@@ -1,6 +1,9 @@
 package com.elytelabs.quoteutils.dialogs
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -30,15 +33,14 @@ class FontStyleDialog(private val context: Context) {
 
     fun showFontSelectionDialog() {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_font_selector, null)
-        val builder = AlertDialog.Builder(context)
-        builder.setView(dialogView)
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(dialogView)
 
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.fontRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         val adapter = FontStyleAdapter(context)
         recyclerView.adapter = adapter
-
-        val dialog = builder.show()
 
         dialogView.findViewById<ImageView>(R.id.backButton).setOnClickListener {
             dialog.dismiss()
@@ -50,6 +52,8 @@ class FontStyleDialog(private val context: Context) {
         }
 
         adapter.setFonts(fonts)
+
+        dialog.show()
 
     }
 }

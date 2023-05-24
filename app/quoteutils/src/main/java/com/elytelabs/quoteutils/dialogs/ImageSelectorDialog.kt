@@ -1,6 +1,9 @@
 package com.elytelabs.quoteutils.dialogs
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -33,15 +36,14 @@ class ImageSelectorDialog(private val context: Context) {
 
     fun showImageSelectionDialog() {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_image_selector, null)
-        val builder = AlertDialog.Builder(context)
-        builder.setView(dialogView)
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(dialogView)
 
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.imageRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(context, 3)
         val adapter = ImageAdapter()
         recyclerView.adapter = adapter
-
-        val dialog = builder.show()
 
         dialogView.findViewById<ImageView>(R.id.backButton).setOnClickListener {
             dialog.dismiss()
@@ -67,6 +69,7 @@ class ImageSelectorDialog(private val context: Context) {
 
         adapter.setBackgrounds(backgrounds)
 
+        dialog.show()
     }
 
 }

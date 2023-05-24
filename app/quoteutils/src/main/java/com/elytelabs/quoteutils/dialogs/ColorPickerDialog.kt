@@ -1,11 +1,12 @@
 package com.elytelabs.quoteutils.dialogs
 
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.SeekBar
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elytelabs.quoteutils.R
@@ -27,16 +28,15 @@ class ColorPickerDialog(private val context: Context) {
     fun showColorPickerDialog() {
 
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_color_picker, null)
-        val builder = AlertDialog.Builder(context)
-        builder.setView(dialogView)
+        val dialog = Dialog(context)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(dialogView)
 
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.colorRecyclerView)
         val transparencySeekBar = dialogView.findViewById<SeekBar>(R.id.transparencySeekBar)
         recyclerView.layoutManager = GridLayoutManager(context, 5)
         val adapter = ColorAdapter()
         recyclerView.adapter = adapter
-
-        val dialog = builder.show()
 
         dialogView.findViewById<ImageView>(R.id.colorBackButton).setOnClickListener {
             dialog.dismiss()
@@ -62,5 +62,7 @@ class ColorPickerDialog(private val context: Context) {
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+
+        dialog.show()
     }
 }
