@@ -5,6 +5,24 @@ Quotes Library Utils and Helpers
 This project demonstrates a simple Android application that allows users to customize the layout, font, and color of a text view. 
 Users can select different backgrounds, fonts, and colors, and perform actions such as sharing the text or opening a web page.
 
+## Installation
+To use this project, follow these steps:
+Step 1. Add the JitPack repository to your build file
+ Add it in your root build.gradle at the end of repositories:
+ 
+     allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	  }
+       
+ Step 2. Add the dependency
+ 
+      dependencies {
+	        implementation 'com.github.ElyteLabs:QuotesLibrary:1.1.0'
+	}
+
 ## Usage
 In your activity or fragment, declare the following views:
 #### ColorGenerator - 
@@ -60,3 +78,7 @@ Helper methods for common tasks.
     UtilsHelper.copyText(this,textView.text.toString())
     UtilsHelper.openWebPage(this,WEBSITE_URL)
     UtilsHelper.showRatingDialog(this) // InAppReviewManager 
+    
+    
+### License
+This project is licensed under the[ Apache 2.0 ](http://www.apache.org/licenses/LICENSE-2.0.txt)License.
