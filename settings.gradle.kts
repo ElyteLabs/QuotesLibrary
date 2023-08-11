@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "quotes library"
+rootProject.name = "Quotes Library"
 include(":app")
 include(":app:quoteutils")
