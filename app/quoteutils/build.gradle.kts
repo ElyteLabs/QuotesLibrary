@@ -10,7 +10,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        minSdk = 25
+        minSdk = 23
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -44,7 +44,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
 
     implementation("com.google.android.play:review-ktx:2.0.1")
 }
@@ -55,7 +55,7 @@ dependencies {
             register<MavenPublication>("release") {
                 groupId = "com.elytelabs.quoteutils"
                 artifactId = "quoteutils"
-                version = "1.1"
+                version = "1.2"
 
                 afterEvaluate {
                     from(components["release"])

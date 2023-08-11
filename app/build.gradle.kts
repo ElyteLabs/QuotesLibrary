@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.elytelabs.quoteslibrary"
-        minSdk = 25
+        minSdk = 23
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
