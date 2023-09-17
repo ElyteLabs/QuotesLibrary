@@ -9,7 +9,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.widget.Toast
-import com.elytelabs.quoteutils.R
 
 object UtilsHelper {
 
@@ -33,10 +32,10 @@ object UtilsHelper {
         InAppReviewManager.showRateDialogIfNeeded(activity)
     }
 
-    fun copyText(context: Context, value:String) {
+    fun copyText(context: Context, value: String) {
         val clipboardManager = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         // When setting the clipboard text.
-        clipboardManager.setPrimaryClip(ClipData.newPlainText   ("text", value))
+        clipboardManager.setPrimaryClip(ClipData.newPlainText("text", value))
         // Only show a toast for Android 12 and lower.
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
             context.showToast("Copied to Clipboard")
@@ -47,10 +46,11 @@ object UtilsHelper {
         val intent = Intent(Intent.ACTION_VIEW, webpage)
         if (intent.resolveActivity(context.packageManager) != null) {
             context.startActivity(intent)
+        } else {
+            context.showToast("No app can handle this action")
         }
     }
 
-
     private fun Context.showToast(message: String) =
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

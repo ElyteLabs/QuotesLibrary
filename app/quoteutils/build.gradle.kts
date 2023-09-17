@@ -55,7 +55,7 @@ dependencies {
             register<MavenPublication>("release") {
                 groupId = "com.elytelabs.quoteutils"
                 artifactId = "quoteutils"
-                version = "1.2"
+                version = "1.2.2"
 
                 afterEvaluate {
                     from(components["release"])

@@ -21,14 +21,13 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val imageResource = backgrounds[position]
         if (position == 0) {
             holder.imageView.setImageResource(R.drawable.color_wheel)
             holder.itemView.setOnClickListener {
                 onColorPickerListener?.invoke()
             }
-        }
-        else {
+        } else {
+            val imageResource = backgrounds[position - 1]  // Adjusted position
             holder.imageView.setImageResource(imageResource)
             holder.itemView.setOnClickListener {
                 onImageClickListener?.invoke(imageResource)
@@ -37,7 +36,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return backgrounds.size
+        // Add 1 to account for the color wheel item
+        return backgrounds.size + 1
     }
 
     fun setBackgrounds(backgrounds: List<Int>) {
